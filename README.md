@@ -26,9 +26,12 @@ This project demonstrates a controlled cybersecurity lab environment by deployin
 
 ## P1. Logical Diagram 
 **Objective:** Utilize <a href ="https://app.diagrams.net/"> draw.io</a> to visualize our project</br>
+
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/98eeb071-befb-453e-81b0-5d340f93374c" alt="pfSense Firewall Lab" />
+  <img src="https://github.com/user-attachments/assets/d9da3484-f3da-4d02-a7f3-59f4b8b37aa9" alt="pfSense Firewall Lab" />
 </p>
+
+
 
 
 
