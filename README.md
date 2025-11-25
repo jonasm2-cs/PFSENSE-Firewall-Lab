@@ -16,15 +16,33 @@ This project demonstrates a controlled cybersecurity lab environment by deployin
 ## Resources
 - <a href="https://www.youtube.com/watch?v=-yRvfbElT7M">PFSENSE Firewall (How to install and use)</a>
 - <a href="https://drive.google.com/file/d/1Lr1NF7gJlQ8v2qirsi4klRLmhlQ4VShr/view">PFSENSE Firewall Lab Guide.pdf</a>
--<a href="https://www.pfsense.org/download/"> pfSense Installer</a>
+- <a href="https://www.pfsense.org/download/"> pfSense Installer</a>
 - <a href="https://www.kali.org/get-kali/#kali-installer-images"> Kali Installer
+- <a href="https://ubuntu.com/download/desktop"> Ubuntu Installer
 
 
 ## Table of Contents
 
 
 ## P1. Logical Diagram 
-**Objective:** Utilize <a href ="https://app.diagrams.net/"> draw.io</a> to visualize our project
+**Objective:** Utilize <a href ="https://app.diagrams.net/"> draw.io</a> to visualize our project</br>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/98eeb071-befb-453e-81b0-5d340f93374c" alt="pfSense Firewall Lab" />
+</p>
+
+
+
+| Device / Segment            | Adapter Type     | Interface | IP / Subnet                 | Role / Notes                               |
+|-----------------------------|------------------|-----------|------------------------------|---------------------------------------------|
+| **Home LAN (physical)**     | — (host network) | —         | 192.168.0.0/24               | Provides Internet & bridges to lab         |
+| **pfSense – WAN**           | Bridged          | vtnet0    | 192.168.0.254/24 → GW 192.168.0.1 | Edge firewall toward home LAN              |
+| **Kali Linux (Attacker)**   | Bridged          | eth0      | 192.168.0.200/24             | External attacker host                     |
+| **Lab LAN (`LabNet`)**      | Internal Network | —         | 192.168.1.0/24               | Isolated subnet behind pfSense             |
+| **pfSense LAN**           | Internal (`LabNet`) | vtnet1 | 192.168.1.1/24 (DHCP .100–.199) | Default GW & DHCP/DNS relay                |
+| **Ubuntu Desktop (Victim)** | Internal (`LabNet`) | eth0   | 192.168.1.100/24             | Victim workload                            |
+
+
+
 
 ## P2. Installing our .iso files
 **Objective:** Install .iso files of PfSense, Kali Linux and Ubuntu
