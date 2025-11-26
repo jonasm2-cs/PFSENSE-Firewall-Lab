@@ -62,6 +62,55 @@ Click <a href="https://www.kali.org/get-kali/#kali-installer-images">here</a> to
 <img width="1258" height="1022" alt="image" src="https://github.com/user-attachments/assets/e3db16de-8fcf-4091-976b-4a84a2c5b050" />
 Click <a href="https://ubuntu.com/download/desktop">here</a> to download the latest version of Ubuntu
 
+
+## P3. Setting up our Oracle Virtual Box
+<img width="1270" height="809" alt="image" src="https://github.com/user-attachments/assets/16278767-d841-48e2-9b24-9346aa3cee85" />
+**Objective:** Import our recently installed .iso files into Oracle VirtualBox
+
+### Step 1: Setting up our pfSense VM
+- **Name:** PFSENSE Firewall
+- **ISO:** netgate-installer-v1.1-amd64.iso
+- **Type:** BSD
+- **Subtype:** FreeBSD
+- **Version:** FreeBSD(64-Bit)
+- **Hardware:**
+  - **Base Memory:** 2048MB
+  - **Processors:** 2
+- **Hard Disk:**
+  - 20.00 GB
+- **Network:**
+  - **Adapter 1:** Bridged Adapter
+  - **Adapter 2:** LabNet
+
+### Step 2: Setting up our Ubuntu desktop
+- **Name:** Ubuntu-desktop
+- **ISO:** ubuntu-24.04.03-desktop-amd64.io
+- **Type:** Linux
+- **Subtype:** Ubuntu
+- **Version:** Ubuntu(64-Bit)
+- **Hardware:**
+  - **Base Memeory** 2048MB (2GB)
+  - **Processors:** 2
+- **Hard Disk:**
+  - 25.00 GB
+- **Network:**
+  - **Adapter 1:** Internal Network
+  - **Name:** LabNet
+ 
+### Step 3: Setting up our Kali Linux VM
+- **Name:** Kali Linux
+- **ISO:** kali-linux-2025.3-installer-amd64.iso
+- **Type:** Linux
+- **Subtype:** Ubuntu
+- **Version:** Ubuntu(64-Bit)
+- **Hardware:**
+  - **Base Memeory** 2048MB (2GB)
+  - **Processors:** 2
+- **Hard Disk:**
+  - 25.00 GB
+- **Network:**
+  - Adapter 1: Bridged 
+
 ## Lessons Learned
 
 
