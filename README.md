@@ -109,7 +109,31 @@ Click <a href="https://ubuntu.com/download/desktop">here</a> to download the lat
 - **Hard Disk:**
   - 25.00 GB
 - **Network:**
-  - Adapter 1: Bridged 
+  - Adapter 1: Bridged
+
+## P4. Setting up pfSense
+### Step 1: Installing pfSense
+<img width="715" height="404" alt="image" src="https://github.com/user-attachments/assets/9b22a00d-34f4-48cb-aea1-529c1ab359d9" />
+
+- **WAN Interface Assignment and Configuration:** em0
+- **WAN (em0) Network Mode Setup:** Keep Defaults
+- **LAN Interface Assignment and Configuration:** em1
+- **LAN (em1) Network Mode Setup:** Keep Defaults
+- **Interface Assignment and Configuration:** Continue
+- **Active Subscription Validation:** Install CE
+- Keep Defaults or the first option
+- Install > Shell > Power off
+- In Virtualbox Remove the netgear installation attatchment from Stroage
+
+<img width="715" height="390" alt="image" src="https://github.com/user-attachments/assets/8e3a2505-179c-4148-9e3a-d8007edbd47f" />
+
+### Step 2: Disabling the Firewall
+<img width="1553" height="785" alt="image" src="https://github.com/user-attachments/assets/3a18666a-86e4-49c6-bc94-86584f065e7a" />
+
+
+In the pfsense VM (Left of photo) > Enter option: 8 > pfctl -d > Verify if you can access the WAN in a web browser > Username: admin > Password: pfsense
+
+
 
 ## Lessons Learned
 
