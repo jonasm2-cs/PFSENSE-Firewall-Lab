@@ -37,7 +37,7 @@ This project demonstrates a controlled cybersecurity lab environment by deployin
 
 | Device / Segment            | Adapter Type     | Interface | IP / Subnet                 | Role / Notes                               |
 |-----------------------------|------------------|-----------|------------------------------|---------------------------------------------|
-| **Home LAN (physical)**     | — (host network) | —         | 192.168.0.0/24               | Provides Internet & bridges to lab         |
+| **Home LAN (physical)**     | — (host network) | —         | 10.0.0.0/24               | Provides Internet & bridges to lab         |
 | **pfSense – WAN**           | Bridged          | vtnet0    | 192.168.0.254/24 → GW 192.168.0.1 | Edge firewall toward home LAN              |
 | **Kali Linux (Attacker)**   | Bridged          | eth0      | 192.168.0.200/24             | External attacker host                     |
 | **Lab LAN (`LabNet`)**      | Internal Network | —         | 192.168.1.0/24               | Isolated subnet behind pfSense             |
@@ -111,7 +111,7 @@ Click <a href="https://ubuntu.com/download/desktop">here</a> to download the lat
 - **Network:**
   - Adapter 1: Bridged
 
-## P4. Setting up pfSense
+## P4. Setting up pfSense VM
 ### Step 1: Installing pfSense
 <img width="715" height="404" alt="image" src="https://github.com/user-attachments/assets/9b22a00d-34f4-48cb-aea1-529c1ab359d9" />
 
@@ -133,6 +133,41 @@ Click <a href="https://ubuntu.com/download/desktop">here</a> to download the lat
 
 In the pfsense VM (Left of photo) > Enter option: 8 > pfctl -d > Verify if you can access the WAN in a web browser > Username: admin > Password: pfsense
 
+## P5. Configuring pfSetup GUI
+<img width="1266" height="564" alt="image" src="https://github.com/user-attachments/assets/85f7afd9-0f79-46df-825f-fb956003c6e1" />
+
+- Login to pfSense > System > Setup wizard > Next
+- **Time Server Information:** Change Timezone Accordingly 
+- **Configure WAN Interface:**
+  -  **RFC1918 Networks:** Uncheck Block private Networks from entering via WAN
+  -  **Block bogon networks:** Uncheck Block non-internet routed networks from entering via WAN
+- **Configure LAN Interface:** Keep Defaults
+- **Change admin Account Password:** *any password*
+- Reload
+- In the pfSense firewall Console disable the firewall: pfctl -d
+
+## P6: Creating a Security Policy for WAN access
+<img width="1270" height="526" alt="image" src="https://github.com/user-attachments/assets/0d9bb40c-ce43-4153-ac02-8a558a67ef0b" />
+
+- Login to pfSense > Firewall > Rules > Add
+- **Edit:**
+  - **Edit Firewall Rule:**
+    - **Action:** Pass
+  - **Source:**
+    - Network > <*home network*>/24
+  - **Destination:**
+    - Network > <*pfSense WAN*>/24
+  - **Extra Options:**
+    - Check Log packets that are handled by this rule
+- Save > Apply Changes
+- Verify > Hover over States > under the States Section you should see logs *see below
+<img width="1274" height="515" alt="image" src="https://github.com/user-attachments/assets/3354bd48-0e30-4166-9455-7535391046e4" />
+
+## P7. Setting up DHCP on pfSense LAN
+Login to pfSense > Services > DHCP Server
+- **General Settings:**
+  - Enable DHCP Server on LAN Interface
+    
 
 
 ## Lessons Learned
