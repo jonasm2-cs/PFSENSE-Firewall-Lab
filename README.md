@@ -164,9 +164,19 @@ In the pfsense VM (Left of photo) > Enter option: 8 > pfctl -d > Verify if you c
 <img width="1274" height="515" alt="image" src="https://github.com/user-attachments/assets/3354bd48-0e30-4166-9455-7535391046e4" />
 
 ## P7. Setting up DHCP on pfSense LAN
+### Step 1: 
 Login to pfSense > Services > DHCP Server
 - **General Settings:**
-  - Enable DHCP Server on LAN Interface
+  - Ensure *Enable DHCP Server on LAN Interface* is checked
+- **Primary Address Pool**
+  - Subnet: 192.168.1.0/24
+  - Subnet Range: 192.168.1.1 - 192.168.1.254
+- **Server Options:**
+  - DNS Servers: *<home-router-address>*
+- Save > Apply Changes
+
+### Step 2: Verify Ubuntu Connectivity
+Open Ubuntu VM > Open Terminal > ifconfig > Verify if Ip is 
     
 
 
