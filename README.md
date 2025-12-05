@@ -173,10 +173,10 @@ Login to pfSense > Services > DHCP Server
 - **Server Options:**
   - DNS Servers: *<home-router-address>*
 - Save > Apply Changes
-
-### Step 2: Verify Ubuntu Connectivity
-Open Ubuntu VM > Open Terminal > ifconfig > Verify if Ip is 192.168.1.100/24 > ping pfSense LAN
+- Open Ubuntu VM > Open Terminal > ifconfig > Verify if Ip is 192.168.1.100/24 > ping pfSense LAN
 <img width="1068" height="203" alt="image" src="https://github.com/user-attachments/assets/1ec5b51e-c4c6-4ae7-83f6-6741ad496d8b" />
+
+## P8. Setting up Kali Linux
 
 
 
