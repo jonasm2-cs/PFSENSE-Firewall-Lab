@@ -39,7 +39,7 @@ This project demonstrates a controlled cybersecurity lab environment by deployin
 |-----------------------------|------------------|-----------|------------------------------|---------------------------------------------|
 | **Home LAN (physical)**     | — (host network) | —         | 10.0.0.0/24               | Provides Internet & bridges to lab         |
 | **pfSense – WAN**           | Bridged          | vtnet0    | 192.168.0.254/24 → GW 192.168.0.1 | Edge firewall toward home LAN              |
-| **Kali Linux (Attacker)**   | Bridged          | eth0      | 192.168.0.200/24             | External attacker host                     |
+| **Kali Linux (Attacker)**   | Bridged          | eth0      | 10.0.0.13/24             | External attacker host                     |
 | **Lab LAN (`LabNet`)**      | Internal Network | —         | 192.168.1.0/24               | Isolated subnet behind pfSense             |
 | **pfSense LAN**           | Internal (`LabNet`) | vtnet1 | 192.168.1.1/24 (DHCP .100–.199) | Default GW & DHCP/DNS relay                |
 | **Ubuntu Desktop (Victim)** | Internal (`LabNet`) | eth0   | 192.168.1.100/24             | Victim workload                            |
@@ -177,8 +177,25 @@ Login to pfSense > Services > DHCP Server
 <img width="1068" height="203" alt="image" src="https://github.com/user-attachments/assets/1ec5b51e-c4c6-4ae7-83f6-6741ad496d8b" />
 
 ## P8. Setting up Kali Linux
+- Login to pfSense > Firewall > Rules > Add
+- **Edit:**
+  - **Edit Firewall Rule:**
+    - **Action:** Pass
+    - **Protocol:** ICMP
+    - **ICMP Subtype:** any
+  - **Source:**
+    - Address or Alias > <*kali linux ip*>/24
+  - **Destination:**
+    - Address or Alias > <*pfSense WAN*>/24
+  - **Extra Options:**
+    - Check Log packets that are handled by this rule
+- Save > Apply Changes
+- Verify > Hover over States > under the States Section you should see logs *see below
+<img width="631" height="96" alt="image" src="https://github.com/user-attachments/assets/34b7c30d-2fca-4f8b-8d4c-2c4f7de200a0" />
+<img width="1140" height="580" alt="image" src="https://github.com/user-attachments/assets/bee64925-e31f-49c2-bb89-de9a75ff3e3b" />
 
-
+## P9. Installing Wireshark on Ubuntu
+Open Ubuntu VM > Open Terminal > Type: *sudo apt install wireshark*
 
 ## Lessons Learned
 
